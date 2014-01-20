@@ -3,11 +3,13 @@ Created on Jan 19, 2014
 
 @author: Zim
 '''
-import socket
+
 import plzkthx.Server
+import plzkthx.Client
 
 serv = plzkthx.Server.Server()
 serv.start()
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("localhost", 54321))
+for i in range(0, 2):
+    ct = plzkthx.Client.Client(i)
+    ct.start()

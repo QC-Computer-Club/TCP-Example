@@ -6,7 +6,7 @@ Created on Jan 19, 2014
 
 import socket
 import threading
-import time
+import plzkthx.ClientThread
 
 class Server(threading.Thread):
     def __init__(self):
@@ -19,5 +19,6 @@ class Server(threading.Thread):
        
     def run(self):
         while True:
-            (self.clientsocket, self.clientaddress) = self.serversocket.accept()
-            print("hi!")
+            (clientsocket, clientaddress) = self.serversocket.accept()
+            ct = plzkthx.ClientThread.ClientThread(clientsocket, clientaddress)
+            ct.start()
